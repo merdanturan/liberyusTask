@@ -1,0 +1,35 @@
+@import "../variables";
+
+.ModalContainer {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.ModalContent { 
+    background-color: $global-white;
+    margin: 15% auto;
+    padding: 20px;
+    width: 40%;
+    border-radius: $border-radius;
+}
+
+.ModalClose {
+    position: relative;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    top: -20px;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        cursor: pointer;
+    }
+}

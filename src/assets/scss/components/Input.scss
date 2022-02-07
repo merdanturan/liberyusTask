@@ -1,0 +1,47 @@
+@import "../variables";
+
+.InputWrapper {
+    display: flex;
+    align-items: center;
+    border-radius: $border-radius;
+    width: 100%;
+
+    &:focus-within {
+        border: 0;
+        outline: none;
+    }
+}
+
+.Input {
+    display: block;
+    font-size: $input-font-size;
+    border-radius: $border-radius;
+    border: 0;
+    line-height: 1.5;
+    width: 100%;
+    padding: 6px 12px;
+    min-width: 100px;
+    line-height: 1;
+    background-color: $bg-input;
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    &:focus-within {
+        border: 0;
+        outline: none;
+        background-color: rgba($bg-input, 0.8);
+
+        &::placeholder {
+            color: rgba($color-input, 0.8);
+        }
+    }
+
+    &.is-hidden {
+        display: none;
+    }
+
+    &::placeholder {
+        color: $color-input;
+    }
+
+}

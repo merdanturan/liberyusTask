@@ -1,0 +1,10 @@
+@import "../variables";
+
+.FormContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.DateWrapper {
+    padding-right: 24px;
+}

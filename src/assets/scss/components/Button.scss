@@ -1,0 +1,23 @@
+@import "../variables";
+
+.Button {
+  background-color: $color-primary;
+  color: $global-white;
+  align-items: center;
+  padding: 8px 16px;
+  font-size: $input-font-size;
+  border-radius: $border-radius;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  line-height: 1;
+
+  &:hover {
+    background-color: rgba($color-primary, 0.85);
+  }
+
+  &.is-full {
+    width: 100%;
+  }
+}

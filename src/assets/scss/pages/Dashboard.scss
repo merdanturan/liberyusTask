@@ -1,0 +1,41 @@
+@import "../variables";
+
+.DashboardContainer {
+    background-color: rgba($global-white, 0.7);
+    padding: 40px;
+}
+
+.DashboardHeader {
+    font-size: $header-font-size-1;
+    margin-bottom: 16px;
+}
+
+.DashboardText {
+    font-size: $body-font-size;
+    margin-bottom: 8px;
+}
+
+.divider {
+    position: relative;
+    height: 50px;
+    line-height: 45px;
+    text-align: center;
+
+    &::before,
+    &::after {
+        position: absolute;
+        width: 130px;
+        height: 1px;
+        top: 24px;
+        background-color: $color-input;
+        content: '';
+    }
+
+    &::before {
+        left: 0;
+    }
+
+    &::after {
+        right: 0;
+    }
+}
