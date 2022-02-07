@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment'
 import cx from 'classnames';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { collection, query, orderBy, onSnapshot } from 'firebase/firestore'
 import { db } from '../firebase';
 
 import DefaultLayout from '../layout/DefaultLayout'
 import Button from '../components/basic/Button'
-import { setAllDomains } from '../app/store/data';
 import '../assets/scss/pages/Dashboard.scss'
 
 
@@ -17,7 +15,6 @@ const Dashboard = () => {
   ////States
   const [domains, setDomains] = useState([])
   const [filteredDomains, setFilteredDomains] = useState([])
-  const dispatch = useDispatch()
 
   ////Getting data on first load
   useEffect(() => {
@@ -32,7 +29,6 @@ const Dashboard = () => {
 
   ////Set data to state and redux when domains change
   useEffect(() => {
-    dispatch(setAllDomains(domains))
     setFilteredDomains(domains.filter(x => daysLeft(x.data.validUntil.seconds) <= 15))
   }, [domains])
 

@@ -51,6 +51,7 @@ const AddDomain = () => {
               selected={date}
               placeholderText="Valid Until"
               onChange={(d) => setDate(d)}
+              minDate={new Date()}
               required />
           </div>
         </div>

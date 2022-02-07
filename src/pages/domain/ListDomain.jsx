@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment'
 import DatePicker from "react-datepicker";
 import cx from 'classnames';
-import { useSelector } from 'react-redux';
-import { doc, updateDoc, deleteDoc } from 'firebase/firestore'
+import { doc, updateDoc, deleteDoc, collection, query, orderBy, onSnapshot } from 'firebase/firestore'
 
 import { db } from '../../firebase';
 import Modal from '../../components/basic/Modal';
@@ -14,20 +13,26 @@ import DefaultLayout from '../../layout/DefaultLayout';
 
 const ListDomain = () => {
   ///States
-  const { allDomains } = useSelector(state => state.data)
   const [domains, setDomains] = useState([])
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalIndex, setModalIndex] = useState();
   const [alert, setAlert] = useState("");
+
   ///Modal states
   const [domain, setDomain] = useState("");
   const [domainProvider, setDomainProvider] = useState("");
   const [date, setDate] = useState();
 
-  ///Set data to state when alldomains change
+  ///Get domains from database
   useEffect(() => {
-    setDomains(allDomains)
-  }, [allDomains])
+    const q = query(collection(db, 'domains'), orderBy('validUntil'))
+    onSnapshot(q, (querySnapshot) => {
+      setDomains(querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        data: doc.data()
+      })))
+    })
+  }, [])
 
   ///Modal opener
   const handleModal = x => {
@@ -122,6 +127,7 @@ const ListDomain = () => {
                   selected={date}
                   placeholderText="Valid Until"
                   onChange={(d) => setDate(d)}
+                  minDate={new Date()}
                   required />
               </div>
             </div>
